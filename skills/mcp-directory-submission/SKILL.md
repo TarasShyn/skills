@@ -21,6 +21,19 @@ Auth advice for the server itself: accept the API token both as `Bearer <token>`
 const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : authHeader;
 ```
 
+## 0. Prepare a submission sheet first
+
+Every directory asks for the same values, and inventing them per form is how listings drift apart. Before the first submission, write one plain-text sheet covering every MCP in the portfolio, one block per product:
+
+- MCP endpoint (custom-domain streamable-http URL) and auth methods
+- Registry name (`com.<domain>/mcp-server`) and current version
+- Display name, homepage (the product's agents page if it has one), public source repo, icon URL
+- Short description, 100 characters or fewer - the registry and Smithery's parameter field both enforce this cap
+- Long description in markdown - lead with what the server does for an agent, bullet the tool capabilities, end with one line on auth
+- The Smithery connection parameter spec
+
+Write the descriptions from the product's live homepage, not from memory; name the platforms and features the site names. Do not lead with counts ("9 platforms"); list the actual platform names. Keep the sheet next to other submission sheets in the main repo and update it as directories are added; every future form is then a copy-paste job.
+
 ## 1. Official MCP registry
 
 The registry stores metadata only. For a remote server there is no package to publish, just a `server.json` and a domain proof.
