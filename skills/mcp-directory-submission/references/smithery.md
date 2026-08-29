@@ -30,7 +30,18 @@ The gateway then sends the user's value as the `Authorization` header, verbatim.
 
 Use the Preview toggle to sanity-check what the gateway will prompt for.
 
-## Step 4: after publishing
+## Step 4: server settings (Settings tab, required for a listing that ranks)
+
+The wizard publishes a bare listing; the Settings tab is where the marketplace-facing fields live, and they feed the Quality Score. Fill all of them:
+
+- Display Name: the product name with proper casing (`AdaptlyPost`, not the slug).
+- Description: markdown, no tight length cap. Lead with what the server does for an agent, then a short bullet list of the tools' capabilities, then one line on auth. Reuse the brand's agent-directory description; do not write a new variant per site.
+- Homepage: the page about the product's agent integration if one exists (e.g. `/features/agents`), else the product root.
+- GitHub Repository: optional public source link on the server page. Use a public repo only; a private one 404s for visitors. The brand's public agent/plugin repo works; leave blank if everything relevant is private.
+- Server Icon: upload the brand logo (same file the entity kit uses). Without it Smithery scrapes the homepage favicon, which is usually low-resolution.
+- Unlisted: leave unchecked.
+
+## Step 5: after publishing
 
 - The server page's Releases tab shows deployments; "Publish via URL" there creates a new release of the same server, not a new listing.
 - The Quality Score (0-100) expands into a checklist of missing metadata: description, icon, homepage, tool annotations, typed output. Each item raises ranking inside Smithery's search; most take minutes since the assets already exist in the brand's entity kit.
