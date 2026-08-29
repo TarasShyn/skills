@@ -329,7 +329,7 @@ PLATFORMS.push(
     category: 'agents',
     match: ['registry.modelcontextprotocol.io'],
     claimUrl: 'https://registry.modelcontextprotocol.io',
-    effort: 'medium',
+    effort: 'hard',
     guide: [
       'Write a server.json with the com.<domain>/<server> name and the remote streamable-http URL.',
       'Prove domain ownership: apex TXT record, then `mcp-publisher login dns`.',
@@ -343,17 +343,21 @@ PLATFORMS.push(
     category: 'agents',
     match: ['smithery.ai'],
     claimUrl: 'https://smithery.ai/new',
-    effort: 'medium',
+    effort: 'hard',
     guide: ['Add the server at smithery.ai/new with the remote URL and auth details (see the mcp-directory-submission skill).', 'The server page goes into sameAs once live.'],
   },
   {
-    id: 'pulsemcp',
-    name: 'PulseMCP',
+    id: 'glama-mcp',
+    name: 'Glama MCP directory',
     category: 'agents',
-    match: ['pulsemcp.com'],
-    claimUrl: 'https://www.pulsemcp.com',
-    effort: 'medium',
-    guide: ['PulseMCP indexes the official MCP registry; check for your server page after publishing there.', 'Submit manually through the site if it has not appeared.'],
+    match: ['glama.ai'],
+    claimUrl: 'https://glama.ai/mcp/connectors',
+    effort: 'hard',
+    guide: [
+      'Hosted servers auto-list from the official registry at glama.ai/mcp/connectors/<registry-name> within a day; add that page to sameAs, no submission.',
+      'Claim it by serving /.well-known/glama.json (maintainer email matching the Glama account) from the MCP domain.',
+      'For the scored listing at glama.ai/mcp/servers/<owner>/<repo>, add an mcp-remote Dockerfile to the public repo and submit it via Add Server (see the mcp-directory-submission skill).',
+    ],
   },
   {
     id: 'mcp-so',
@@ -361,17 +365,14 @@ PLATFORMS.push(
     category: 'agents',
     match: ['mcp.so'],
     claimUrl: 'https://mcp.so/submit',
-    effort: 'medium',
-    guide: ['Submit the server with the remote URL, name, and short description.', 'The server page goes into sameAs once live.'],
-  },
-  {
-    id: 'glama-mcp',
-    name: 'Glama MCP directory',
-    category: 'agents',
-    match: ['glama.ai'],
-    claimUrl: 'https://glama.ai/mcp/servers',
-    effort: 'medium',
-    guide: ['Claim or add the server in the Glama MCP directory.', 'The server page goes into sameAs once live.'],
+    effort: 'hard',
+    paid: true,
+    guide: [
+      'Paid listing, $39 one-time per server: submit on the Remote Server tab with the real /mcp endpoint and the product name, then pay.',
+      'After payment, edit the listing. The Homepage, Docs, and GitHub repo fields render dofollow; links inside the markdown body get rel="nofollow ugc".',
+      'Point Homepage at the apex domain, not the MCP subdomain, then view source on the live listing and confirm the anchor has no nofollow.',
+      'Field values and the full walkthrough: the mcp-directory-submission skill in this collection.',
+    ],
   },
   {
     id: 'awesome-mcp-servers',
@@ -379,8 +380,12 @@ PLATFORMS.push(
     category: 'agents',
     match: ['github.com/punkpeye/awesome-mcp-servers'],
     claimUrl: 'https://github.com/punkpeye/awesome-mcp-servers',
-    effort: 'easy',
-    guide: ['Fork the list and add the server under the right category with a one-line description.', 'Open the PR; the merged line is the listing.'],
+    effort: 'hard',
+    guide: [
+      'Get the public repo scored on Glama first; the PR bot requires a Glama score badge in the entry line.',
+      'Add one line under the right category: repo link, Glama badge, the permitted emojis, a description naming the platforms.',
+      'One clean commit per server, PR title ending in the agent fast-track emojis; full runbook in the mcp-directory-submission skill.',
+    ],
   },
   {
     id: 'n8n',
@@ -397,7 +402,7 @@ PLATFORMS.push(
   }
 );
 
-export const PAID_HOSTS = ['theresanaiforthat.com', 'betalist.com', 'uneed.best', 'toolify.ai', 'futurepedia.io'];
+export const PAID_HOSTS = ['theresanaiforthat.com', 'betalist.com', 'uneed.best', 'toolify.ai', 'futurepedia.io', 'mcp.so'];
 
 export const isPaidHost = (url) => PAID_HOSTS.some((host) => url.toLowerCase().includes(host));
 

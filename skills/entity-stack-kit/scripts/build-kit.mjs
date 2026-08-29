@@ -49,7 +49,7 @@ const profileRow = ({ platform, url, status }) => {
     : `<div class="platform-url"><a href="${esc(platform.claimUrl)}" rel="noopener">${esc(platform.claimUrl)}</a>${copyButton(platform.claimUrl)}</div>`;
 
   const effort = platform?.effort ?? 'easy';
-  const paid = Boolean(url && isPaidHost(url));
+  const paid = Boolean(platform?.paid || (url && isPaidHost(url)));
   const badges = `<span class="badge effort-${esc(effort)}">${esc(effort)}</span>${paid ? '<span class="badge paid">paid</span>' : ''}`;
 
   return `<details data-platform="${esc(platform?.id ?? 'unknown')}" data-status="${esc(status)}" data-effort="${esc(effort)}" data-paid="${paid}" data-url="${esc(targetUrl)}">
