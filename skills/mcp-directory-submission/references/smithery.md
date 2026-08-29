@@ -41,7 +41,18 @@ The wizard publishes a bare listing; the Settings tab is where the marketplace-f
 - Server Icon: upload the brand logo (same file the entity kit uses). Without it Smithery scrapes the homepage favicon, which is usually low-resolution.
 - Unlisted: leave unchecked.
 
-## Step 5: after publishing
+## Step 5: verifications (Domain and Badges panels)
+
+Two checks on the server page prove ownership and earn the verified state; both re-check on demand.
+
+- Domain TXT: Smithery gives a token like `smithery-verification=<hex>`. Add it as an **additional** TXT value on the apex of the homepage host, next to the MCP registry's `v=MCPv1` record; multiple TXT values on the same name coexist.
+- Link to Smithery: their scanner must find a link to the server page in one of three places - the README of the GitHub repo linked in settings, the homepage, or a custom backlink URL on the same domain. The cheapest is the README badge, pasted near the top:
+
+  `[![smithery badge](https://smithery.ai/badge/<namespace>/<id>)](https://smithery.ai/servers/<namespace>/<id>)`
+
+  Server pages live at `smithery.ai/servers/<namespace>/<id>` (plural `servers`). If the backlink lives on the site instead and the site sits behind a WAF or bot protection, allow the user agent `SmitheryBot/1.0 (+https://smithery.ai)` or the scan never sees it.
+
+## Step 6: after publishing
 
 - The server page's Releases tab shows deployments; "Publish via URL" there creates a new release of the same server, not a new listing.
 - The Quality Score (0-100) expands into a checklist of missing metadata: description, icon, homepage, tool annotations, typed output. Each item raises ranking inside Smithery's search; most take minutes since the assets already exist in the brand's entity kit.
