@@ -334,6 +334,7 @@ PLATFORMS.push(
       'Write a server.json with the com.<domain>/<server> name and the remote streamable-http URL.',
       'Prove domain ownership: apex TXT record, then `mcp-publisher login dns`.',
       '`mcp-publisher publish`; aggregator directories scrape this registry, so downstream listings follow.',
+      'Full runbook with scripts: the mcp-directory-submission skill in this collection.',
     ],
   },
   {
@@ -343,7 +344,7 @@ PLATFORMS.push(
     match: ['smithery.ai'],
     claimUrl: 'https://smithery.ai/new',
     effort: 'medium',
-    guide: ['Add the server at smithery.ai/new with the remote URL and auth details.', 'The server page goes into sameAs once live.'],
+    guide: ['Add the server at smithery.ai/new with the remote URL and auth details (see the mcp-directory-submission skill).', 'The server page goes into sameAs once live.'],
   },
   {
     id: 'pulsemcp',

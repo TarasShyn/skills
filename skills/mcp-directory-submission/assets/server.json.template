@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.REVERSE_DNS_DOMAIN/mcp-server",
+  "title": "PRODUCT_NAME",
+  "description": "What the server does for an agent, in 100 characters or fewer.",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.DOMAIN/mcp"
+    }
+  ]
+}

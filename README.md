@@ -17,6 +17,7 @@ Or clone one folder by hand into `.claude/skills/<name>` (or your agent's skills
 ## Reference
 
 - **[google-preferred-sources-button](./skills/google-preferred-sources-button/SKILL.md)** — Add a "Make us preferred on Google" button to any site so readers can mark it as a Google preferred source. Placement, wording, framework-agnostic code, tests. Everything factual comes from Google's own guide.
+- **[mcp-directory-submission](./skills/mcp-directory-submission/SKILL.md)** — Publish a remote MCP server to the official MCP registry and Smithery: server.json template, DNS domain proof, publish scripts, and the review gotchas from three production submissions. More directories as they get added.
 - **[entity-stack-kit](./skills/entity-stack-kit/SKILL.md)** — Read a site's `sameAs` schema and generate one HTML submission kit: logo, banner, descriptions, and every entity profile with copy buttons and per-directory guides. Machine-readable for agents; optional DataForSEO or Ahrefs description alignment.
 
 ## License

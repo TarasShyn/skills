@@ -53,7 +53,7 @@ If the product ships a browser extension or app, the store listings (Chrome Web 
 
 ## AI agent and automation directories
 
-The hard tier. Claude, OpenAI, Zapier, and n8n all list product integrations, and every listing doubles as an entity profile, but each needs a working artifact first, not a form. Zapier wants a reviewed integration built on its developer platform before the zapier.com/apps listing exists; n8n wants a published npm community node that passes verification before it appears at n8n.io/integrations.
+The hard tier. Claude, OpenAI, Zapier, and n8n all list product integrations, and every listing doubles as an entity profile, but each needs a working artifact first, not a form. For the MCP side (official registry, Smithery, and the MCP directories), the `mcp-directory-submission` skill in this collection is the full runbook: scripts, server.json template, DNS proof, and the review gotchas. Zapier wants a reviewed integration built on its developer platform before the zapier.com/apps listing exists; n8n wants a published npm community node that passes verification before it appears at n8n.io/integrations.
 
 For Claude, the plugin is a public repo with `.claude-plugin/plugin.json` plus a skill or MCP server. Validate with `claude plugin validate .`, submit at https://platform.claude.com/plugins/submit, and approval adds the plugin to the `anthropics/claude-plugins-community` catalog, installable as `<name>@claude-community`. The official curated marketplace has no application process; Anthropic promotes plugins at its discretion.
 
