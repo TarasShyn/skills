@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{{NAME}} entity kit</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --fg: #1a1a1a;
+        --muted: #737373;
+        --line: #ebebeb;
+        --ok: #1a7f37;
+        --todo: #9a6700;
+        --broken: #cf222e;
+        --paid: #8250df;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0c0c0c;
+          --fg: #ededed;
+          --muted: #8a8a8a;
+          --line: #262626;
+          --ok: #3fb950;
+          --todo: #d29922;
+          --broken: #f85149;
+          --paid: #a371f7;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 15px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 48px 24px 96px;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      h1 a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      h2 {
+        margin: 48px 0 12px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .agent-note {
+        margin-bottom: 32px;
+        font-size: 13px;
+      }
+
+      .banner {
+        width: 100%;
+        max-height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+      }
+
+      .identity {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .identity img {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        object-fit: contain;
+      }
+
+      .field {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .field:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .field-label {
+        flex: none;
+        width: 96px;
+        font-size: 12px;
+        color: var(--muted);
+        padding-top: 2px;
+      }
+
+      .field-value {
+        flex: 1;
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .field-value.prewrap {
+        white-space: pre-line;
+      }
+
+      .field-value.mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+      }
+
+      details {
+        border-top: 1px solid var(--line);
+      }
+
+      details:last-of-type {
+        border-bottom: 1px solid var(--line);
+      }
+
+      summary {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 0;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::before {
+        content: '';
+        flex: none;
+        width: 6px;
+        height: 6px;
+        border-right: 1.5px solid var(--muted);
+        border-bottom: 1.5px solid var(--muted);
+        transform: rotate(-45deg);
+        transition: transform 120ms ease;
+      }
+
+      details[open] summary::before {
+        transform: rotate(45deg);
+      }
+
+      .platform-name {
+        font-weight: 500;
+      }
+
+      .status {
+        flex: none;
+        width: 68px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .status-live {
+        color: var(--ok);
+      }
+
+      .status-to-submit {
+        color: var(--todo);
+      }
+
+      .status-broken {
+        color: var(--broken);
+      }
+
+      .badge {
+        flex: none;
+        min-width: 52px;
+        text-align: center;
+        padding: 1px 7px;
+        border-radius: 999px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      .effort-easy {
+        border: 1px solid var(--ok);
+        color: var(--ok);
+      }
+
+      .effort-medium {
+        border: 1px dashed var(--todo);
+        color: var(--todo);
+      }
+
+      .effort-hard {
+        border: 1px dashed var(--broken);
+        color: var(--broken);
+      }
+
+      .paid {
+        border: 1px solid var(--paid);
+        color: var(--paid);
+      }
+
+      .platform-host {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .platform-body {
+        padding: 0 0 16px 18px;
+      }
+
+      .platform-url {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .platform-url a {
+        overflow-wrap: anywhere;
+        color: var(--fg);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+      }
+
+      ol {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      ol li + li {
+        margin-top: 4px;
+      }
+
+      .copy {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .copy:hover {
+        color: var(--fg);
+        border-color: var(--fg);
+      }
+
+      .copy svg {
+        display: block;
+      }
+
+      .copy .done,
+      .copy.is-copied .idle {
+        display: none;
+      }
+
+      .copy.is-copied .done {
+        display: block;
+      }
+
+      footer {
+        margin-top: 48px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="agent-note">
+        Entity submission kit for {{NAME}}. Agents: the full kit is JSON in <code>#entity-kit-data</code>; each profile row carries
+        <code>data-platform</code>, <code>data-status</code>, <code>data-url</code>.
+      </p>
+
+      {{BANNER_IMG}}
+
+      <div class="identity">
+        {{LOGO_IMG}}
+        <div>
+          <h1><a href="{{URL}}">{{NAME}}</a></h1>
+          <p>{{URL_HOST}}</p>
+        </div>
+      </div>
+
+      <h2>Identity fields</h2>
+      <!--FIELDS-->
+
+      <!--SECTIONS-->
+
+      <footer>Generated {{DATE}} by the entity-stack-kit skill.</footer>
+    </main>
+
+    <script type="application/json" id="entity-kit-data">
+{{KIT_JSON}}
+    </script>
+    <script type="application/ld+json">
+{{JSONLD}}
+    </script>
+    <script>
+      document.querySelectorAll('[data-copy]').forEach((button) => {
+        let timer = null;
+
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(button.getAttribute('data-copy')).then(() => {
+            button.classList.add('is-copied');
+            clearTimeout(timer);
+            timer = setTimeout(() => button.classList.remove('is-copied'), 2000);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
