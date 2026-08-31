@@ -311,6 +311,33 @@ PLATFORMS.push(
     ],
   },
   {
+    id: 'clawhub-skill',
+    name: 'ClawHub skill',
+    category: 'agents',
+    match: ['/skills/'],
+    claimUrl: 'https://clawhub.ai/skills/publish',
+    effort: 'hard',
+    guide: [
+      'ClawHub (clawhub.ai) is the OpenClaw Foundation registry of skills and plugins for OpenClaw agents, searchable by vector search.',
+      'Write the skill as a SKILL.md folder in a public repo that solves a real job with your product, not a stub; publishing is gated behind sign-in.',
+      'Create the brand org first, then publish from clawhub.ai/skills/publish or import the repo at clawhub.ai/import with GitHub sign-in.',
+      'The listing lands at clawhub.ai/<org>/skills/<name>; that URL goes into sameAs once live.',
+    ],
+  },
+  {
+    id: 'clawhub-plugin',
+    name: 'ClawHub plugin',
+    category: 'agents',
+    match: ['/plugins/'],
+    claimUrl: 'https://clawhub.ai/plugins/publish',
+    effort: 'hard',
+    guide: [
+      'The heavier ClawHub listing: a plugin is code an OpenClaw agent loads and runs, not a Markdown skill.',
+      'Build it against your product API in a public repo, then publish from clawhub.ai/plugins/publish under the brand org, signed in with GitHub.',
+      'The listing lands at clawhub.ai/<org>/plugins/<name>; that URL goes into sameAs once live.',
+    ],
+  },
+  {
     id: 'zapier',
     name: 'Zapier app directory',
     category: 'agents',
