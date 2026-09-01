@@ -273,6 +273,19 @@ export const PLATFORMS = [
     guide: ['The review page exists per domain already; claim it from the business portal.', 'Set logo and short description on the claimed profile.'],
   },
   {
+    id: 'trustradius',
+    name: 'TrustRadius',
+    category: 'reviews',
+    match: ['trustradius.com'],
+    claimUrl: 'https://www.trustradius.com/vendors',
+    effort: 'easy',
+    guide: [
+      'Add the product as a vendor; the listing goes through a review before it appears at trustradius.com/products/<slug>.',
+      'Paste name, logo, short description, homepage, and the category competitors sit in.',
+      'The product page URL goes into sameAs once it is live.',
+    ],
+  },
+  {
     id: 'alternativeto',
     name: 'AlternativeTo',
     category: 'reviews',
