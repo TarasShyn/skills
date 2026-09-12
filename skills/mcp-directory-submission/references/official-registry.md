@@ -44,7 +44,7 @@ PUBLIC_KEY="$($OSSL pkey -in ~/.mcp-registry/example.com.pem -pubout -outform DE
 echo "example.com. IN TXT \"v=MCPv1; k=ed25519; p=${PUBLIC_KEY}\""
 ```
 
-2. Add the TXT record on the **apex** of the domain (name `@`). The docs are explicit: SPF-style placement, not DKIM-style. A record under `_mcp-auth.example.com` is invisible to the registry and fails with a generic signature error. When rotating keys, delete the old apex record; a stale one gets tried first and breaks verification.
+2. Add the TXT record on the **apex** of the domain (name `@`) in the DNS dashboard. Cloudflare's wrangler login token cannot write DNS records (`Authentication error`), and wrangler has no DNS commands; do not mint an API token for one record. The docs are explicit: SPF-style placement, not DKIM-style. A record under `_mcp-auth.example.com` is invisible to the registry and fails with a generic signature error. When rotating keys, delete the old apex record; a stale one gets tried first and breaks verification.
 
 3. Confirm propagation: `dig +short TXT example.com @1.1.1.1 | grep MCPv1`.
 
@@ -67,7 +67,11 @@ The trap with multiple domains: login state is a single token holding the permis
 curl -s "https://registry.modelcontextprotocol.io/v0/servers?search=com.example" | jq
 ```
 
-The entry carries `status: active` and a publish timestamp in `_meta`. Version bumps: edit `version` in server.json, login, publish. There is no delete in the docs; treat names as permanent.
+The entry carries `status: active` and a publish timestamp in `_meta`. Version bumps: edit `version` in server.json, login, publish; the old version stays listed with `isLatest: false`. There is no delete in the docs; treat names as permanent.
+
+A server code change needs no republish; the entry only points at the URL. A description change does, because every aggregator reprints the description verbatim. One server went from "9 networks" to the platform names for that reason.
+
+Keep each product's `server.json` and this runbook in a small private repo (`<org>/mcp-registry`). If it sits as a nested checkout inside the server repo, add it to the parent's `.gitignore` or it lands as a broken gitlink.
 
 ## Aggregators
 

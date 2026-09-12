@@ -1,6 +1,6 @@
 # mcp.so submission (paid)
 
-Verified 2026-08-29 by purchasing a Remote Server listing for a production server. mcp.so is paid-only: $39 one-time per server buys instant publishing without review, a verified badge, featured placement, and dofollow links. Their pitch claims DR 72 (Ahrefs) with 57K backlinks; unverified but plausible for the domain. The purchase decision is the user's; the skill's default stance is that the free channels (official registry, Smithery, aggregators) cover discovery and mcp.so is bought for the backlink.
+Verified 2026-08-29 by purchasing a Remote Server listing for a production server, and again 2026-09-11 for a second product. mcp.so is paid-only: $39 one-time per server buys instant publishing without review, a verified badge, featured placement, and dofollow links. Their pitch claims DR 72 (Ahrefs) with 57K backlinks; unverified but plausible for the domain. The purchase decision is the user's; the skill's default stance is that the free channels (official registry, Smithery, aggregators) cover discovery and mcp.so is bought for the backlink.
 
 ## Why the backlink is real
 
@@ -15,18 +15,20 @@ After the listing is live, view source and confirm your anchors have no `nofollo
 
 ## Submission flow
 
-1. https://mcp.so/submit, tab **Remote Server** (tabs: MCP Server, Remote Server, MCP Client, AI Agent; pick what the project actually is, miscategorizing wastes the listing).
+1. https://mcp.so/submit, tab **Remote Server** (tabs: MCP Server, Remote Server, MCP Client, AI Agent). A hosted endpoint is a Remote Server even when a public repo exists; the repo only fills the GitHub field. The MCP Server tab is for repos people run locally, and picking it for a hosted product lists the wrong thing.
 2. The pre-pay form is minimal: Remote endpoint URL (the real `/mcp` streamable-http URL) and Name. "Pay and submit automatically", $39 via their checkout.
 3. Payment unlocks the full edit form. Fields observed:
    - Name, Author (use the brand name, not a personal name, if editable)
    - Description (short text; the auto-generated "X is a remote MCP server available at..." is filler, replace it with the submission sheet's platform-naming description)
    - Category (single slug) and Tags (comma list; replace their auto-guessed tags)
-   - Homepage URL and Docs URL (the dofollow slots)
+   - Website URL (prefilled with the MCP host; change it to the apex) and Docs URL (the dofollow slots)
    - GitHub repo URL (dofollow, public repo only)
    - Type (`remote-server`), Endpoint, Server config JSON (`{"mcpServers": {"<id>": {"type": "http", "url": "..."}}}`)
    - Authentication (write "OAuth or API key (Authorization header)"; if single-choice, pick OAuth)
    - Screenshot uploads (max 10MB each) and a markdown Content section (template starts "## What is ...")
 4. Content section: What is / Key features / How to use / Use cases, from the submission sheet's long description. No links (nofollowed anyway).
+
+mcp.so also builds listing text from the linked repo's README, so a README that opens with a skill install command reads like a skill page here. Once live, the linked repo cannot be changed from the edit form; the "submit a ticket" link on the form is the only route. How to make the listing refetch the tool list after a server update is still unknown.
 
 ## Categories
 

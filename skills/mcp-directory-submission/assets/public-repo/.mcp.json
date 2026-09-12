@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "PRODUCT": {
+      "type": "http",
+      "url": "https://mcp.DOMAIN/mcp",
+      "headers": {
+        "Authorization": "Bearer ${PRODUCT_API_KEY}"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "PRODUCT": {
+      "type": "streamable-http",
+      "url": "https://mcp.DOMAIN/mcp",
+      "headers": {
+        "Authorization": "Bearer ${PRODUCT_API_KEY}"
+      }
+    }
+  }
+}
